@@ -13,8 +13,9 @@ function find_song(term){
         display_results(results)
 
         button = document.createElement('button');
-        button.textContent = 'NEXT';
-        document.getElementById('display').appendChild(button);
+        button.textContent = '>';
+        button.classList = 'next'
+        document.getElementById('next_prev').appendChild(button);
 
         button.addEventListener('click',()=>{
             more_songs(data.next);
@@ -34,8 +35,9 @@ function more_songs(next_url){
         
         if(data.prev){
             button = document.createElement('button');
-            button.textContent = 'PREV';
-            document.getElementById('display').appendChild(button);
+            button.textContent = '<';
+            button.classList = 'previous'
+            document.getElementById('next_prev').appendChild(button);
 
             button.addEventListener('click',()=>{
                 more_songs(data.prev);
@@ -44,8 +46,9 @@ function more_songs(next_url){
 
         if(data.next){
             button = document.createElement('button');
-            button.textContent = 'NEXT';
-            document.getElementById('display').appendChild(button);
+            button.textContent = '>';
+            button.classList = 'next'
+            document.getElementById('next_prev').appendChild(button);
 
             button.addEventListener('click',()=>{
                 more_songs(data.next);
@@ -59,7 +62,7 @@ function more_songs(next_url){
 function display_results(stuff_to_display){
     document.getElementById('display').innerHTML = '';
     user_input.value = '';
-    
+    document.getElementById('next_prev').innerHTML = '';
 
     stuff_to_display.forEach(a=>{
         const p = document.createElement('p');
