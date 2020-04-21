@@ -81,7 +81,7 @@ input{
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 30%;
+  min-width: 30%;
   position: absolute;
   top: 10%;
   left: 50%;
@@ -108,3 +108,17 @@ input{
 	position:relative;
 	top:1px;
 }
+
+@media only screen and (max-width: 450px) {
+    body {
+      background-color: lightblue;
+    }
+    .wrap{
+        width: 80%;
+        margin-top:20px;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+  }
