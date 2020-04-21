@@ -14,7 +14,7 @@ function find_song(term){
 
         button = document.createElement('button');
         button.textContent = '>';
-        button.classList = 'next'
+        button.classList = 'next navigator'
         document.getElementById('next_prev').appendChild(button);
 
         button.addEventListener('click',()=>{
@@ -36,7 +36,7 @@ function more_songs(next_url){
         if(data.prev){
             button = document.createElement('button');
             button.textContent = '<';
-            button.classList = 'previous'
+            button.classList = 'previous navigator'
             document.getElementById('next_prev').appendChild(button);
 
             button.addEventListener('click',()=>{
@@ -47,7 +47,7 @@ function more_songs(next_url){
         if(data.next){
             button = document.createElement('button');
             button.textContent = '>';
-            button.classList = 'next'
+            button.classList = 'next navigator'
             document.getElementById('next_prev').appendChild(button);
 
             button.addEventListener('click',()=>{
@@ -66,8 +66,9 @@ function display_results(stuff_to_display){
 
     stuff_to_display.forEach(a=>{
         const p = document.createElement('p');
+        p.classList = 'song_item'
         p.innerHTML = `
-            <b>${a.artist.name}</b> - ${a.title}
+            <div><b>${a.artist.name}</b> - ${a.title}</div> <button class='myButton'>Get Lyrics</button>
         `
         document.getElementById('display').appendChild(p)
         
