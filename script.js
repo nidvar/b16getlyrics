@@ -68,10 +68,20 @@ function display_results(stuff_to_display){
         const p = document.createElement('p');
         p.classList = 'song_item'
         p.innerHTML = `
-            <div><b>${a.artist.name}</b> - ${a.title}</div> <button class='myButton'>Get Lyrics</button>
+            <div><b>${a.artist.name}</b> - ${a.title}</div> 
         `
+        const get_lyrics_button = document.createElement('button');
+        get_lyrics_button.textContent = "Get Lyrics"
+        get_lyrics_button.setAttribute('artist',a.artist.name)
+        get_lyrics_button.setAttribute('title',a.title)
+        get_lyrics_button.classList = 'myButton'
+        get_lyrics_button.addEventListener('click',(e)=>{
+            grablyrics(e.target.getAttribute('artist'), e.target.getAttribute('title'))
+        })
+
+
+        p.appendChild(get_lyrics_button)
         document.getElementById('display').appendChild(p)
-        
     })
 
 
@@ -82,8 +92,21 @@ function display_results(stuff_to_display){
 }
 
 
+function grablyrics(artist, title){
+    fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
+    .then(res=>res.json())
+    .then(data=>{
+        const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>')
+        display_lyrics(lyrics)
+    })
+}
 
-
+function display_lyrics(data){
+    document.getElementById('display').innerHTML = '';
+    const p = document.createElement('p');
+    p.innerHTML = data;
+    document.getElementById('display').appendChild(p)
+}
 
 
 
