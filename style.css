@@ -107,9 +107,6 @@ input{
 }
 
 @media only screen and (max-width: 450px) {
-    body {
-      background-color: lightblue;
-    }
     #my_form{
         min-width:80%;
     }

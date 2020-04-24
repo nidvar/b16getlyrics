@@ -96,8 +96,15 @@ function grablyrics(artist, title){
     fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
     .then(res=>res.json())
     .then(data=>{
+        console.log(data)
+        if(data.error){
+            console.log('error')
+            display_lyrics('No lyrics Found')
+        }else{
         const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>')
         display_lyrics(lyrics)
+        }
+
     })
 }
 
